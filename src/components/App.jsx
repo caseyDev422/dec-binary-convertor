@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function App(props) {
   const [count, setCount] = useState(0);
+  const [binary, setBinary] = useState(0);
 
   function useInput() {
     const [count, setCount] = useState(0);
@@ -72,13 +73,15 @@ function App(props) {
     setCount(count - 1);
   }
 
-  function decToBinary() {
-    setCount(count.toString(2));
+  function decToBinary(e) {
+    var binaryDigit = e.target.value;
+    var parsedBinary = parseInt(binaryDigit, 2);
+    setCount("");
+    setBinary(parsedBinary);
   }
 
   function binaryToDec() {
-    var digit = parseInt(count, 2);
-    setCount(digit);
+    setCount(count.toString(2));
   }
 
   function plusZero() {
@@ -89,24 +92,36 @@ function App(props) {
     setCount(count + 0 + 1);
   }
 
+  function resetBinary() {
+    setBinary(0);
+  }
+
   function reset() {
     setCount(0);
+  }
+
+  function inputDecimal(e) {
+    setCount(e.target.value);
   }
 
   return (
     <>
       <div className="container">
-        <h2>Decimal to Binary</h2>
-        <h1>{count}</h1>
-        <button onClick={decrease}>-</button>
-        <button onClick={increase}>+</button>
-        <button onClick={increaseTen}>+10</button>
-        <button onClick={increaseHundred}>+100</button>
-        <button onClick={decToBinary}>conv</button>
-        <button onClick={reset}>reset</button>
+        <h2>Binary to Decimal</h2>
+        <h1>{binary}</h1>
+        <input
+          onChange={inputDecimal}
+          type="number"
+          placeholder="Enter base10 Number"
+          value={count}
+        />
+        <button onClick={decToBinary} value={count}>
+          conv
+        </button>
+        <button onClick={resetBinary}>reset</button>
       </div>
       <div className="container">
-        <h2>Binary to Decimal</h2>
+        <h2>Decimal to Binary</h2>
         <h1>{count}</h1>
         <button onClick={plusOne}>+1</button>
         <button onClick={plusZero}>+0</button>
