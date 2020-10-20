@@ -5,18 +5,6 @@ function App(props) {
   const [decCount, setDecCount] = useState(0);
   const [binary, setBinary] = useState(0);
 
-  function useInput() {
-    const [count, setCount] = useState(0);
-    const input = (
-      <input
-        value={count}
-        onChange={(e) => setCount(e.target.value)}
-        type="number"
-      />
-    );
-    return [count, input];
-  }
-
   function increase() {
     setDecCount(decCount + 1);
   }
@@ -35,10 +23,6 @@ function App(props) {
 
   function plusThousand() {
     setDecCount(decCount + 1000);
-  }
-
-  function decrease() {
-    setCount(count - 1);
   }
 
   function decToBinary(e) {
