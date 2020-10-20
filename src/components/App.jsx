@@ -15,7 +15,7 @@ function App(props) {
     return [count, input];
   }
 
-  const [decimal, setDecimal] = useState(0);
+  // const [decimal, setDecimal] = useState(0);
 
   // function Binary() {
   //   const [decimal, setDecimal] = useState(0);
@@ -32,9 +32,9 @@ function App(props) {
   //   return [decimalBinary, decimal];
   // }
 
-  function binaryConvert() {
-    setDecimal(decimal.toString(2));
-  }
+  // function binaryConvert() {
+  //   setDecimal(decimal.toString(2));
+  // }
 
   // function ResetDecimal() {
   //   const [value, setDecimalZero] = useInput(0);
@@ -56,8 +56,16 @@ function App(props) {
     setCount(count + 10);
   }
 
+  function increaseNine() {
+    setCount(count + 10);
+  }
+
   function increaseHundred() {
     setCount(count + 100);
+  }
+
+  function increaseHundredOne() {
+    setCount(count + 101);
   }
 
   function decrease() {
@@ -69,9 +77,16 @@ function App(props) {
   }
 
   function binaryToDec() {
-    var countInt = count;
-    var digit = parseInt(countInt, 2);
+    var digit = parseInt(count, 2);
     setCount(digit);
+  }
+
+  function plusZero() {
+    setCount(count * 10);
+  }
+
+  function plusOne() {
+    setCount(count + 0 + 1);
   }
 
   function reset() {
@@ -93,13 +108,14 @@ function App(props) {
       <div className="container">
         <h2>Binary to Decimal</h2>
         <h1>{count}</h1>
-        <button onClick={decrease}>-</button>
-        <button onClick={increase}>+</button>
-        <button onClick={increaseTen}>+10</button>
-        <button onClick={increaseHundred}>+100</button>
+        <button onClick={plusOne}>+1</button>
+        <button onClick={plusZero}>+0</button>
+        <button onClick={increaseNine}>+10</button>
+        <button onClick={increaseHundredOne}>+101</button>
         <button onClick={binaryToDec}>conv</button>
         <button onClick={reset}>reset</button>
       </div>
+      <useInput />
       {/* <div className="container">
         <h3>Decimal - Binary</h3>
         <Binary />
