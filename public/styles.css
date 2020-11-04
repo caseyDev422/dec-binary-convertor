@@ -8,11 +8,11 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 80px;
+  font-size: 100px;
 }
 
 .gold-color {
-  color: #00ff73;
+  color: dark yellow;
   text-shadow: 2px 2px 5px rgb(31, 43, 51);
 }
 
